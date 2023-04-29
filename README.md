@@ -5,6 +5,7 @@
 Este projeto foi implementado de acordo com os padrões de projetos:
 
 Builder (Criacional)
+
 Singleton (Criacional)
 
 
