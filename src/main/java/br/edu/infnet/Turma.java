@@ -54,4 +54,15 @@ public class Turma {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+
+    @Override
+    public String toString() {
+        return "Turma{" +
+                "codigo='" + codigo + '\'' +
+                ", nivelIngles='" + nivelIngles + '\'' +
+                ", turno=" + turno +
+                ", professor=" + professor +
+                ", aluno=" + aluno +
+                '}';
+    }
 }
