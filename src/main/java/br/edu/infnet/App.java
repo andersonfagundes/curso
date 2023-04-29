@@ -19,6 +19,10 @@ public class App
                 .estado("Rio de Janeiro")
                 .build();
 
+        Professor professor = new Professor("Fulano de tal");
+
+        Turma turma = new Turma("B1-2023-M","B1",Turno.MANHA,professor);
+
         Aluno aluno = new Aluno.AlunoBuilder()
                 .nome("Anderson")
                 .telefone("21999999999")
@@ -28,6 +32,7 @@ public class App
                 .nomeMae("Minha mae")
                 .nomePai("Meu pai")
                 .endereco(enderecoAluno)
+                .turma(turma)
                 .build();
 
         Endereco enderecoProfessor = new Endereco.EnderecoBuilder()
@@ -39,12 +44,24 @@ public class App
                 .estado("Rio de Janeiro")
                 .build();
 
-        Professor professor = new Professor("Fulano de tal");
+        System.out.println("\n-----DETALHES PESSOAIS DO ALUNO-----");
+        System.out.println("Nome: "+aluno.getNome());
+        System.out.println("Identidade: "+aluno.getIdentidade());
+        System.out.println("CPF: "+aluno.getCpf());
+        System.out.println("Mãe: "+aluno.getNomeMae());
+        System.out.println("Pai: "+aluno.getNomePai());
+        System.out.println("Telefone: "+aluno.getTelefone());
+        System.out.println("Rua: "+enderecoAluno.getRua());
+        System.out.println("Número: "+enderecoAluno.getNumero());
+        System.out.println("Complemento: "+enderecoAluno.getComplemento());
+        System.out.println("Bairro: "+enderecoAluno.getBairro());
+        System.out.println("Cidade: "+enderecoAluno.getCidade());
+        System.out.println("Estado: "+enderecoAluno.getEstado());
 
-        Turma turma = new Turma("B1-2023-M","B1",Turno.MANHA,professor,aluno);
-
-        System.out.println("Aluno: "+aluno.toString());
-        System.out.println("Endereco do aluno: "+enderecoAluno);
-        System.out.println("Turma: "+turma.toString());
+        System.out.println("\n-----DETALHES DA TURMA DO ALUNO-----");
+        System.out.println("Código: "+turma.getCodigo());
+        System.out.println("Nível de Inglês: "+turma.getNivelIngles());
+        System.out.println("Turno: "+turma.getTurno());
+        System.out.println("Professor: "+turma.getProfessor().getNome());
     }
 }
