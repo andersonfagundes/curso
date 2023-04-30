@@ -8,6 +8,8 @@ Builder (Criacional)
 
 Singleton (Criacional)
 
+Decorator (Estrutural)
+
 
 
 
