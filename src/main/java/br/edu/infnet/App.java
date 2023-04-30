@@ -8,11 +8,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println("---SISTEMA ESCOLA DE INGLÊS---");
-
         ConexaoBancoDeDadosSingleton conexao = ConexaoBancoDeDadosSingleton.getInstance("Conectou no Banco de Dados");
 
         if(conexao instanceof  ConexaoBancoDeDadosSingleton) {
+
+            System.out.println("---SISTEMA ESCOLA DE INGLÊS---");
 
             Endereco enderecoAluno = new Endereco.EnderecoBuilder()
                     .rua("Rua que sobe")
@@ -24,6 +24,8 @@ public class App
                     .build();
 
             Professor professor = new Professor("Fulano de tal");
+            ProfessorDecorator.ProfessorComTitulacao professorTitulado = new ProfessorDecorator.ProfessorComTitulacao(
+                    professor, Titulacao.DOUTOR);
 
             Turma turma = new Turma("B1-2023-M", "B1", Turno.MANHA, professor);
 
@@ -66,7 +68,8 @@ public class App
             System.out.println("Código: " + turma.getCodigo());
             System.out.println("Nível de Inglês: " + turma.getNivelIngles());
             System.out.println("Turno: " + turma.getTurno());
-            System.out.println("Professor: " + turma.getProfessor().getNome());
+//            System.out.println("Professor: " + turma.getProfessor().getNome());
+            System.out.println(professorTitulado.getNome());
 
         }
     }

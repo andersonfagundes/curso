@@ -1,6 +1,6 @@
 package br.edu.infnet;
 
-public class Professor {
+public class Professor implements ProfessorInterface {
     private String nome;
 
     public Professor(String nome) {
