@@ -10,6 +10,8 @@ Singleton (Criacional)
 
 Decorator (Estrutural)
 
+Observer (Comportamental)
+
 
 
 
