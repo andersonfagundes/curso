@@ -11,6 +11,7 @@ public class App
         ConexaoBancoDeDadosSingleton conexao = ConexaoBancoDeDadosSingleton.getInstance("Conectou no Banco de Dados");
 
         if(conexao instanceof  ConexaoBancoDeDadosSingleton) {
+//            throw new RuntimeException("Erro no banco de dados");
 
             System.out.println("---SISTEMA ESCOLA DE INGLÊS---");
 
@@ -23,9 +24,29 @@ public class App
                     .estado("Rio de Janeiro")
                     .build();
 
-            Professor professor = new Professor("Fulano de tal");
+            Endereco enderecoProfessor = new Endereco.EnderecoBuilder()
+                    .rua("Rua que desce")
+                    .numero("17")
+                    .complemento("Ap 2")
+                    .bairro("Urca")
+                    .cidade("Rio de Janeiro")
+                    .estado("Rio de Janeiro")
+                    .build();
+
+            Professor professor = new Professor("Fulano de tal", enderecoProfessor);
             ProfessorDecorator.ProfessorComTitulacao professorTitulado = new ProfessorDecorator.ProfessorComTitulacao(
                     professor, Titulacao.DOUTOR);
+
+            ProfessorObserver observer = new ProfessorObserver(professor.getNome());
+            professor.addEnderecoObserver(observer);
+
+            professor.setEndereco(new Endereco.EnderecoBuilder()
+                    .rua("Rua bla bla bla")
+                    .numero("123")
+                    .bairro("Barra da Tijuca")
+                    .cidade("Rio de Janeiro")
+                    .estado("RJ")
+                    .build());
 
             Turma turma = new Turma("B1-2023-M", "B1", Turno.MANHA, professor);
 
@@ -39,15 +60,6 @@ public class App
                     .nomePai("Meu pai")
                     .endereco(enderecoAluno)
                     .turma(turma)
-                    .build();
-
-            Endereco enderecoProfessor = new Endereco.EnderecoBuilder()
-                    .rua("Rua que desce")
-                    .numero("17")
-                    .complemento("Ap 2")
-                    .bairro("Urca")
-                    .cidade("Rio de Janeiro")
-                    .estado("Rio de Janeiro")
                     .build();
 
             System.out.println("\n-----DETALHES PESSOAIS DO ALUNO-----");
@@ -68,7 +80,6 @@ public class App
             System.out.println("Código: " + turma.getCodigo());
             System.out.println("Nível de Inglês: " + turma.getNivelIngles());
             System.out.println("Turno: " + turma.getTurno());
-//            System.out.println("Professor: " + turma.getProfessor().getNome());
             System.out.println(professorTitulado.getNome());
 
         }
